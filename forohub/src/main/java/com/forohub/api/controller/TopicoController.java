@@ -58,6 +58,17 @@ public class TopicoController {
         return repository.findAll(page).map(DatosListaTopico::new);
     }
 
+    @GetMapping("/{id}")
+    public Topico getTopic(@PathVariable Long id) {
+        Optional<Topico> optionalTopico = repository.findById(id);
+        if(optionalTopico.isPresent()) {
+            return optionalTopico.get();
+        }
+        else {
+            return null;
+        }
+    }
+
     @Transactional
     @PutMapping("/{id}")
     public void updateTopic(@PathVariable Long id, @RequestBody @Valid DatosRegistroTopico data) {
@@ -73,10 +84,10 @@ public class TopicoController {
 
     @Transactional
     @DeleteMapping("/{id}")
-    public void deleteTopic(@PathVariable Long id, @RequestBody @Valid DatosRegistroTopico data) {
+    public void deleteTopic(@PathVariable Long id) {
         Optional<Topico> optionalTopico = repository.findById(id);
         if(optionalTopico.isPresent()) {
-            Topico topico = optionalTopico.get();
+            repository.deleteById(id);
         }
         else {
             ResponseEntity.notFound().build();

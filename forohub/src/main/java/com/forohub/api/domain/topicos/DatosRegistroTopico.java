@@ -10,7 +10,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DatosRegistroTopico(
-    @NotNull Long id,
     @NotBlank String titulo,
     @NotBlank String mensaje,
     @JsonFormat(pattern = "dd-MM-yyyy") LocalDate fechaCreacion,

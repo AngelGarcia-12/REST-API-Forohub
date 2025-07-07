@@ -23,7 +23,6 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private static Long id_re = 0L;
 
     private String nombre;
 
@@ -31,7 +30,6 @@ public class Curso {
     private Categoria categoria;
 
     public Curso(DatosCurso datos) {
-        this.id = datos.id() != null ? datos.id() : id_re++;
         this.nombre = datos.nombre();
         this.categoria = datos.categoria();
     }

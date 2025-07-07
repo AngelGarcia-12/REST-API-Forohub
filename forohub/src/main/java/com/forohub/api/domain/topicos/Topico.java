@@ -31,7 +31,6 @@ public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private static Long id_re = 0L;
 
     private String titulo;
     private String mensaje;
@@ -45,7 +44,6 @@ public class Topico {
     private Curso curso;
 
     public Topico(DatosRegistroTopico datos) {
-        this.id = datos.id() != null ? datos.id() : id_re++;
         this.titulo = datos.titulo();
         this.mensaje = datos.mensaje();
         this.fechaCreacion = datos.fechaCreacion() != null ? datos.fechaCreacion() : LocalDate.now();
